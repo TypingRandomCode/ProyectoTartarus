@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c6rdu4glc4eie"]
+
+[ext_resource type="Script" uid="uid://c3lbqvkk1n6fs" path="res://Characters/jugador.gd" id="1_omvyu"]
+[ext_resource type="Texture2D" uid="uid://x2x2vxttnmdk" path="res://icon.svg" id="2_8o684"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvx6h"]
+size = Vector2(127, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r56om"]
+size = Vector2(180, 17)
+
+[node name="Jugador" type="CharacterBody2D" unique_id=1751606726]
+script = ExtResource("1_omvyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=43621690]
+texture = ExtResource("2_8o684")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065604811]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_xvx6h")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=779346776]
+
+[node name="HitboxAtaque" type="Area2D" parent="." unique_id=1296424223]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque" unique_id=823533201]
+position = Vector2(157, 1)
+shape = SubResource("RectangleShape2D_r56om")

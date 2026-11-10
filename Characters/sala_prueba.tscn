@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bv5b1m4wei1w5"]
+
+[ext_resource type="Texture2D" uid="uid://x2x2vxttnmdk" path="res://icon.svg" id="1_0ko1m"]
+[ext_resource type="PackedScene" uid="uid://c6rdu4glc4eie" path="res://Characters/jugador.tscn" id="2_rtb8u"]
+[ext_resource type="Script" uid="uid://bs50nytg4l4oy" path="res://Characters/trampa.gd" id="3_ucmmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvx6h"]
+size = Vector2(1281, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r56om"]
+size = Vector2(140, 132)
+
+[node name="SalaPrueba" type="Node2D" unique_id=2059878317]
+
+[node name="Suelo" type="StaticBody2D" parent="." unique_id=1034964624]
+position = Vector2(562.4649, 580.9219)
+
+[node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=1030307020]
+scale = Vector2(10, 1)
+texture = ExtResource("1_0ko1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=1758702308]
+shape = SubResource("RectangleShape2D_xvx6h")
+
+[node name="Jugador" parent="." unique_id=1751606726 instance=ExtResource("2_rtb8u")]
+position = Vector2(75, 448)
+
+[node name="Trampa" type="Area2D" parent="." unique_id=2040285379]
+position = Vector2(901.85864, 464.94836)
+script = ExtResource("3_ucmmj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trampa" unique_id=168801057]
+modulate = Color(0.6137586, 0.14522818, 0.11410437, 1)
+texture = ExtResource("1_0ko1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trampa" unique_id=1141276702]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_r56om")
+
+[connection signal="body_entered" from="Trampa" to="Trampa" method="_on_body_entered"]
