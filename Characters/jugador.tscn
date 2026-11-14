@@ -20,6 +20,9 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_xvx6h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=779346776]
+limit_left = 0
+limit_right = 1450
+limit_bottom = 768
 
 [node name="HitboxAtaque" type="Area2D" parent="." unique_id=1296424223]
 
