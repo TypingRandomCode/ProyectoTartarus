@@ -50,7 +50,8 @@ centered = false
 
 [node name="SueloIzq1" type="Sprite2D" parent="Floor" unique_id=806558649]
 z_index = -1
-position = Vector2(85, 686)
+position = Vector2(80.75, 686)
+scale = Vector2(1.0502958, 1)
 texture = SubResource("CompressedTexture2D_wfenh")
 region_enabled = true
 region_rect = Rect2(458, 28, 169, 165)
