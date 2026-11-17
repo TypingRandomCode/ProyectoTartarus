@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5x277agmkldt"
-path="res://.godot/imported/tileset_props_japon_hollow.png-ceceff64c304f7f955b7c96fd849e5d1.ctex"
+uid="uid://dfhj7l54jg7pe"
+path="res://.godot/imported/altar_japon.png-ef62e13fe56f122ef96d0010c8f39372.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_hollow_japon/tilesets/tileset_props_japon_hollow.png"
-dest_files=["res://.godot/imported/tileset_props_japon_hollow.png-ceceff64c304f7f955b7c96fd849e5d1.ctex"]
+source_file="res://assets/assets_hollow_japon/tilesets/altar_japon.png"
+dest_files=["res://.godot/imported/altar_japon.png-ef62e13fe56f122ef96d0010c8f39372.ctex"]
 
 [params]
 

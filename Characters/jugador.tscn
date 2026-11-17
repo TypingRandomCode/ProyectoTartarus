@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_xvx6h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=779346776]
 limit_left = 0
+limit_top = -312
 limit_right = 1450
 limit_bottom = 768
 

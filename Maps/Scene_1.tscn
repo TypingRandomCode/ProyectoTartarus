@@ -1,33 +1,23 @@
 [gd_scene format=3 uid="uid://dx6448lm3j4qi"]
 
 [ext_resource type="Script" uid="uid://d3uneuhsiail4" path="res://Maps/scene_1.gd" id="1_lmnrf"]
-[ext_resource type="Texture2D" uid="uid://by5nng132y84p" path="res://assets/assets_hollow_japon/tilesets/tileset_suelo_hollow_knight.png" id="1_u5bl6"]
-[ext_resource type="Texture2D" uid="uid://5x277agmkldt" path="res://assets/assets_hollow_japon/tilesets/tileset_props_japon_hollow.png" id="2_en7n3"]
-[ext_resource type="Texture2D" uid="uid://vebwdw6yton4" path="res://assets/assets_hollow_japon/tilesets/luz_circular.png" id="3_lmnrf"]
 [ext_resource type="PackedScene" uid="uid://c6rdu4glc4eie" path="res://Characters/jugador.tscn" id="4_cj5ut"]
+[ext_resource type="PackedScene" uid="uid://jifvjrifkv6l" path="res://Props/Altar.tscn" id="4_en7n3"]
+[ext_resource type="PackedScene" uid="uid://bv6wj2xi0nclr" path="res://UI/HUD.tscn" id="6_cj5ut"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u3gou"]
 load_path = "res://.godot/imported/parallax_background_mist_hd.png-c1731c3d303513e50cc510dc427618a1.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wfenh"]
-load_path = "res://.godot/imported/tileset_suelo_hollow_knight.png-ad66f12c3922d9f0281f27dbed590c25.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_en7n3"]
+load_path = "res://.godot/imported/sala_entrada_transparente_limpia.png-04e2cb8408894168dc7e746e0cc03b07.ctex"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rvg3u"]
 normal = Vector2(1, 0)
-distance = -2.0
+distance = -87.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8vqkf"]
 a = Vector2(-148, 1)
 b = Vector2(497, 2)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ojca"]
-load_path = "res://.godot/imported/tileset_props_japon_hollow.png-ceceff64c304f7f955b7c96fd849e5d1.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4iatk"]
-load_path = "res://.godot/imported/torii_lateral.png-81f5df2d9615f50c009f859f3d975bdf.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ub5j7"]
-load_path = "res://.godot/imported/torii_lateral.png-81f5df2d9615f50c009f859f3d975bdf.ctex"
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_en7n3"]
 a = Vector2(17, -595)
@@ -38,11 +28,10 @@ script = ExtResource("1_lmnrf")
 
 [node name="Background" type="Parallax2D" parent="." unique_id=2036565927]
 z_index = -10
-scroll_scale = Vector2(0.1, 0.2)
 
 [node name="FondoSprite" type="Sprite2D" parent="Background" unique_id=1515411774]
-position = Vector2(-80, 0)
-scale = Vector2(1.1235466, 1)
+position = Vector2(-235, -312)
+scale = Vector2(1.3953488, 1.40625)
 texture = SubResource("CompressedTexture2D_u3gou")
 centered = false
 
@@ -50,73 +39,16 @@ centered = false
 
 [node name="SueloIzq1" type="Sprite2D" parent="Floor" unique_id=806558649]
 z_index = -1
-position = Vector2(80.75, 686)
-scale = Vector2(1.0502958, 1)
-texture = SubResource("CompressedTexture2D_wfenh")
-region_enabled = true
+position = Vector2(728.00006, 225.99998)
+scale = Vector2(0.702, 0.705)
+texture = SubResource("CompressedTexture2D_en7n3")
 region_rect = Rect2(458, 28, 169, 165)
-region_filter_clip_enabled = true
-
-[node name="SueloIzq2" type="Sprite2D" parent="Floor" unique_id=2020237292]
-z_index = -1
-position = Vector2(252, 686)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(646, 29, 169, 163)
-region_filter_clip_enabled = true
-
-[node name="SueloIzq3" type="Sprite2D" parent="Floor" unique_id=1843517620]
-z_index = -1
-position = Vector2(461, 683)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(0, 24, 251, 168)
-region_filter_clip_enabled = true
-
-[node name="Plataforma" type="Sprite2D" parent="Floor" unique_id=863320688]
-z_index = -1
-position = Vector2(823, 647)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(422, 410, 310, 151)
-region_filter_clip_enabled = true
-
-[node name="SueloDer1" type="Sprite2D" parent="Floor" unique_id=1371127919]
-z_index = -1
-position = Vector2(1211.7832, 684.20605)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(833, 21, 181, 171)
-region_filter_clip_enabled = true
-
-[node name="SueloDer2" type="Sprite2D" parent="Floor" unique_id=1429200727]
-z_index = -1
-position = Vector2(1380, 687)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(646, 29, 169, 163)
-region_filter_clip_enabled = true
-
-[node name="SueloDer3" type="Sprite2D" parent="Floor" unique_id=1137016104]
-z_index = -1
-position = Vector2(1538.5952, 689.6206)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(456, 32, 169, 163)
-region_filter_clip_enabled = true
-
-[node name="SueloDer4" type="Sprite2D" parent="Floor" unique_id=1083442359]
-z_index = -1
-position = Vector2(1538.5952, 689.6206)
-texture = ExtResource("1_u5bl6")
-region_enabled = true
-region_rect = Rect2(456, 32, 169, 163)
 region_filter_clip_enabled = true
 
 [node name="ColisionIni" type="StaticBody2D" parent="Floor" unique_id=1576722598]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/ColisionIni" unique_id=887095630]
-position = Vector2(-1, 0)
+position = Vector2(-41, 12)
 shape = SubResource("WorldBoundaryShape2D_rvg3u")
 
 [node name="ZonaCaida" type="Area2D" parent="Floor" unique_id=1625768134]
@@ -127,82 +59,34 @@ position = Vector2(485, 767)
 position = Vector2(143, -1)
 shape = SubResource("SegmentShape2D_8vqkf")
 
-[node name="ColisionesSuelo" type="StaticBody2D" parent="Floor" unique_id=1046159720]
+[node name="ColisionMapa" type="StaticBody2D" parent="Floor" unique_id=407801620]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/ColisionesSuelo" unique_id=1070926747]
-position = Vector2(56.570435, 641.85675)
-polygon = PackedVector2Array(-55.570435, -34.85675, 528.42957, -37.85675, 499.42957, 28.14325, 466.42957, 59.14325, 442.42957, 65.14325, 431.42957, 87.14325, 431.42957, 104.14325, 416.42957, 126.14325, -59.570435, 126.14325)
+[node name="ColiPiso" type="CollisionPolygon2D" parent="Floor/ColisionMapa" unique_id=2003283765]
+polygon = PackedVector2Array(-238, 490, 293, 492, 293, 476, 316, 475, 316, 460, 339, 460, 339, 442, 363, 442, 363, 426, 387, 427, 388, 403, 1687, 405, 1686, 768, -237, 767)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Floor/ColisionesSuelo" unique_id=1793095720]
-position = Vector2(796.83044, 629.4518)
-polygon = PackedVector2Array(-118.830444, -45.451782, 183.16956, -47.451782, 173.16956, -15.451782, 138.16956, 29.548218, 106.169556, 47.548218, 56.169556, 68.54822, 45.169556, 80.54822, 30.169556, 79.54822, 16.169556, 83.54822, 0.16955566, 82.54822, -24.830444, 61.548218, -35.830444, 65.54822, -52.830444, 54.548218, -78.830444, 44.548218, -92.830444, 10.548218, -108.830444, 6.548218)
+[node name="ColiPuente" type="CollisionPolygon2D" parent="Floor/ColisionMapa" unique_id=1926619381]
+polygon = PackedVector2Array(559, 101, 563, 144, 579, 150, 587, 180, 648, 213, 672, 210, 684, 199, 713, 185, 725, 170, 741, 166, 767, 101)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Floor/ColisionesSuelo" unique_id=2076055895]
-polygon = PackedVector2Array(1125, 609, 1135, 657, 1160, 696, 1189, 700, 1211, 767, 1622, 767, 1620, 607)
+[node name="ColiTecho" type="CollisionPolygon2D" parent="Floor/ColisionMapa" unique_id=559100061]
+polygon = PackedVector2Array(402, -311, 408, -266, 734, -253, 795, -203, 804, -147, 825, -130, 846, -45, 866, -15, 874, 38, 1019, 51, 1061, 29, 1125, 32, 1146, 6, 1263, -30, 1374, -232, 1430, -251, 1685, -251, 1689, -311)
 
 [node name="PuntoRespawn" type="Marker2D" parent="." unique_id=1973632984]
-position = Vector2(44.35292, 592.0424)
-
-[node name="props" type="Node2D" parent="." unique_id=1273256335]
-z_index = -1
-position = Vector2(1101, 541)
-
-[node name="Dummy" type="Sprite2D" parent="props" unique_id=1836654639]
-position = Vector2(-249.99998, -33.500004)
-scale = Vector2(1.0000004, 1.1691177)
-texture = SubResource("CompressedTexture2D_8ojca")
-region_enabled = true
-region_rect = Rect2(736, 616, 96, 136)
-
-[node name="Faro1" type="Sprite2D" parent="props" unique_id=480679201]
-position = Vector2(-1011.5, 17.5)
-scale = Vector2(0.8875, 0.7697368)
-texture = ExtResource("2_en7n3")
-region_enabled = true
-region_rect = Rect2(48, 600, 80, 152)
-
-[node name="PointLight2D" type="PointLight2D" parent="props/Faro1" unique_id=2094935065]
-position = Vector2(6, -13)
-color = Color(1, 0.8235294, 0.49019608, 1)
-texture = ExtResource("3_lmnrf")
-texture_scale = 1.5
-
-[node name="Faro2" type="Sprite2D" parent="props" unique_id=157306985]
-position = Vector2(-681.5, 16.5)
-scale = Vector2(0.8875, 0.79605263)
-texture = ExtResource("2_en7n3")
-region_enabled = true
-region_rect = Rect2(48, 600, 80, 152)
-
-[node name="PointLight2D" type="PointLight2D" parent="props/Faro2" unique_id=828222661]
-position = Vector2(7, -12)
-color = Color(1, 0.8235294, 0.49019608, 1)
-texture = ExtResource("3_lmnrf")
-texture_scale = 1.5
-
-[node name="Torii" type="Sprite2D" parent="props" unique_id=1654582515]
-z_index = -1
-position = Vector2(213, -88.375)
-scale = Vector2(0.26300576, 0.30616438)
-texture = SubResource("CompressedTexture2D_4iatk")
-region_enabled = true
-region_rect = Rect2(0, 0, 692, 1095)
-
-[node name="ToriiProf" type="Sprite2D" parent="props" unique_id=415911392]
-z_index = 2
-position = Vector2(250.00003, -87)
-scale = Vector2(0.2669904, 0.3086925)
-texture = SubResource("CompressedTexture2D_ub5j7")
-region_enabled = true
-region_rect = Rect2(280, 0, 412, 1096)
+position = Vector2(-48, 445)
 
 [node name="SalidaTorii" type="Area2D" parent="." unique_id=2011946809]
 position = Vector2(1101, 541)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalidaTorii" unique_id=147335240]
-position = Vector2(349, 41)
+position = Vector2(556, 8)
 shape = SubResource("SegmentShape2D_en7n3")
 
 [node name="Jugador" parent="." unique_id=1751606726 instance=ExtResource("4_cj5ut")]
-position = Vector2(69, 544)
+position = Vector2(576.1237, 40.616817)
 scale = Vector2(0.7, 0.7)
+
+[node name="HUD" parent="." unique_id=431731274 instance=ExtResource("6_cj5ut")]
+
+[node name="Altar" parent="." unique_id=1294963254 instance=ExtResource("4_en7n3")]
+z_index = -1
+position = Vector2(65, 431.00003)
+scale = Vector2(0.15, 0.15)
