@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d0mbi3kciot3i"]
+
+[ext_resource type="Script" uid="uid://dp3cqux2g12od" path="res://Characters/jefe_demoniaco.gd" id="1_gbpg1"]
+[ext_resource type="Texture2D" uid="uid://x2x2vxttnmdk" path="res://icon.svg" id="1_ldppt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvx6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ldppt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r56om"]
+size = Vector2(264, 257)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5fhm"]
+size = Vector2(264, 260)
+
+[node name="JefeDemoniaco" type="CharacterBody2D" unique_id=1221560624]
+script = ExtResource("1_gbpg1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1385298659]
+modulate = Color(0.5473509, 0.043297127, 0.49128023, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xvx6h")
+
+[node name="ZonaDano" type="Area2D" parent="." unique_id=1303755024]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDano" unique_id=1411916780]
+position = Vector2(-2, -0.5)
+shape = SubResource("RectangleShape2D_r56om")
+
+[node name="TimerAtaque" type="Timer" parent="." unique_id=113430169]
+wait_time = 2.5
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1637869588]
+position = Vector2(-3, -1)
+shape = SubResource("RectangleShape2D_f5fhm")
+
+[node name="HUDJefe" type="CanvasLayer" parent="." unique_id=802692043]
+
+[node name="BarraVida" type="ProgressBar" parent="HUDJefe" unique_id=1478015528]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 30.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[connection signal="body_entered" from="ZonaDano" to="." method="_on_zona_dano_body_entered"]
+[connection signal="timeout" from="TimerAtaque" to="." method="_on_timer_ataque_timeout"]
