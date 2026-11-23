@@ -1,64 +1,97 @@
 extends CharacterBody2D
 
-# Variables de movimiento
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const TIEMPO_INVULNERABLE = 0.8   # segundos sin recibir daño tras un golpe
 
-# Sistema de vida
-var fe: int = 3 # 3 puntos de Fe/Alma[cite: 4]
-@onready var colision_ataque = $HitboxAtaque/CollisionShape2D
-
-# Obtener la gravedad global de la configuración del proyecto
+var fe: int = 3                   # muere con 3 golpes
+var atacando: bool = false
+var invulnerable: bool = false
+var muerto: bool = false
+var enemigos_golpeados: Array = []
+var anim_actual: String = ""
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready() -> void:
+	$HitboxAtaque.body_entered.connect(_on_hitbox_ataque_body_entered)
+
 func _physics_process(delta):
-	# Añadir la gravedad si no está en el suelo
+	if muerto:
+		return
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Lógica de salto[cite: 4]
 	if Input.is_action_just_pressed("salto") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Lógica de ataque cuerpo a cuerpo[cite: 4]
 	if Input.is_action_just_pressed("ataque"):
 		realizar_ataque()
 
-	# Movimiento lateral
 	var direction = Input.get_axis("mover_izq", "mover_der")
 	if direction:
 		velocity.x = direction * SPEED
-		
-		# Voltear el personaje y el ataque según la dirección
-		if direction > 0: # Mirando a la derecha
+		if direction > 0:
 			$Sprite2D.flip_h = false
 			$HitboxAtaque.scale.x = 1
-		elif direction < 0: # Mirando a la izquierda
+		elif direction < 0:
 			$Sprite2D.flip_h = true
 			$HitboxAtaque.scale.x = -1
 	else:
-		# Fricción para detenerse
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	actualizar_animacion(direction)
 
-# Función para ser llamada cuando un enemigo, proyectil o lava lo toque
+# ---------- Animación de movimiento ----------
+func actualizar_animacion(direction: float) -> void:
+	if atacando:
+		return
+	var nueva := "walk" if (direction != 0.0 and is_on_floor()) else "RESET"
+	if nueva != anim_actual:
+		anim_actual = nueva
+		anim_player.play(nueva)
+
+# ---------- Recibir daño ----------
 func recibir_dano(cantidad: int = 1):
+	if invulnerable or muerto:
+		return
 	fe -= cantidad
-	print("Fe restante: ", fe) # Log temporal para consola
-	
+	print("Fe restante: ", fe)
 	if fe <= 0:
 		morir()
+	else:
+		parpadear()
 
-func morir():
+func parpadear() -> void:
+	invulnerable = true
+	var tw := create_tween()
+	for i in 6:
+		tw.tween_property($Sprite2D, "modulate", Color(1, 0.3, 0.3, 0.4), 0.06)
+		tw.tween_property($Sprite2D, "modulate", Color.WHITE, 0.06)
+	tw.tween_interval(max(TIEMPO_INVULNERABLE - 0.72, 0.0))
+	tw.tween_callback(func(): invulnerable = false)
+
+func morir() -> void:
+	muerto = true
 	print("El alma se ha perdido. Reapareciendo...")
-	# Reaparición inmediata reiniciando la escena actual[cite: 2]
-	get_tree().reload_current_scene()
+	get_tree().reload_current_scene.call_deferred()
 
-func realizar_ataque():
-	print("¡Ataque de cadenas espirituales!")
-	colision_ataque.disabled = false # Activa el daño
-	
-	# Espera 0.2 segundos (la duración del golpe) y lo desactiva
-	await get_tree().create_timer(0.2).timeout
-	colision_ataque.disabled = true
+# ---------- Atacar ----------
+func realizar_ataque() -> void:
+	if atacando:
+		return
+	atacando = true
+	enemigos_golpeados.clear()
+	anim_actual = "attack"
+	anim_player.play("attack")
+	await anim_player.animation_finished
+	anim_actual = ""   # fuerza a elegir walk/idle en el siguiente frame
+	atacando = false
+
+func _on_hitbox_ataque_body_entered(body: Node2D) -> void:
+	# Solo golpea enemigos, y solo una vez por ataque
+	if body.is_in_group("enemigos") and not enemigos_golpeados.has(body):
+		enemigos_golpeados.append(body)
+		body.recibir_dano(1)

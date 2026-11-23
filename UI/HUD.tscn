@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bv6wj2xi0nclr"]
+
+[ext_resource type="Script" uid="uid://bktmbekxd2nk6" path="res://UI/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://c8xm667gythjc" path="res://UI/esfera.gd" id="2_esf"]
+[ext_resource type="Texture2D" uid="uid://dm2dxunf4fjev" path="res://UI/hud/marco_esfera.png" id="3_marco"]
+[ext_resource type="Texture2D" uid="uid://d2csq2kx5l1ts" path="res://UI/hud/marco_slot.png" id="4_slot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fondo"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.03, 0.05, 0.07, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="HUD" type="CanvasLayer" unique_id=431731274]
+layer = 10
+script = ExtResource("1_hud")
+
+[node name="Margen" type="MarginContainer" parent="." unique_id=2077866386]
+offset_right = 360.0
+offset_bottom = 120.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="Fondo" type="PanelContainer" parent="Margen" unique_id=139522594]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fondo")
+
+[node name="Fila" type="HBoxContainer" parent="Margen/Fondo" unique_id=1078254739]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Fe" type="HBoxContainer" parent="Margen/Fondo/Fila" unique_id=269133148]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Esfera1" type="Control" parent="Margen/Fondo/Fila/Fe" unique_id=2044922053]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_esf")
+
+[node name="Marco" type="TextureRect" parent="Margen/Fondo/Fila/Fe/Esfera1" unique_id=533391474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_marco")
+expand_mode = 1
+
+[node name="Esfera2" type="Control" parent="Margen/Fondo/Fila/Fe" unique_id=1123748509]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_esf")
+
+[node name="Marco" type="TextureRect" parent="Margen/Fondo/Fila/Fe/Esfera2" unique_id=946593995]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_marco")
+expand_mode = 1
+
+[node name="Esfera3" type="Control" parent="Margen/Fondo/Fila/Fe" unique_id=285800688]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_esf")
+
+[node name="Marco" type="TextureRect" parent="Margen/Fondo/Fila/Fe/Esfera3" unique_id=1396718379]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_marco")
+expand_mode = 1
+
+[node name="SlotImpulso" type="Control" parent="Margen/Fondo/Fila" unique_id=115612939]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Marco" type="TextureRect" parent="Margen/Fondo/Fila/SlotImpulso" unique_id=884992012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_slot")
+expand_mode = 1

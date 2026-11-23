@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds4488vjqyl66"
-path="res://.godot/imported/tileset_temporal.png-d44c3507ee6338296f8697badb7449c7.ctex"
+uid="uid://b18cq66ldaawt"
+path="res://.godot/imported/sala_inicio_ortogonal.png-abf943d4578d85390be918347de056ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset_temporal.png"
-dest_files=["res://.godot/imported/tileset_temporal.png-d44c3507ee6338296f8697badb7449c7.ctex"]
+source_file="res://assets/assets_hollow_japon/references/sala_inicio_ortogonal.png"
+dest_files=["res://.godot/imported/sala_inicio_ortogonal.png-abf943d4578d85390be918347de056ea.ctex"]
 
 [params]
 
