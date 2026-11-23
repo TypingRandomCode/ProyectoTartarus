@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c6862c6rh7rm8"]
+
+[ext_resource type="Texture2D" uid="uid://bdv1284o4bmuy" path="res://assets/sprites/enemy_umbrella_idle.png" id="1_t7c2o"]
+[ext_resource type="Script" uid="uid://ca073xp3xj0x6" path="res://Characters/enemigo_1.gd" id="1_wd583"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwrgn"]
+size = Vector2(53, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojfiw"]
+size = Vector2(64, 80)
+
+[node name="Enemigo1" type="CharacterBody2D" unique_id=1553498163]
+script = ExtResource("1_wd583")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448849062]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_t7c2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519763916]
+position = Vector2(5, -1.5)
+shape = SubResource("RectangleShape2D_dwrgn")
+
+[node name="AreaAtaque" type="Area2D" parent="." unique_id=1879122402]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAtaque" unique_id=400483804]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_ojfiw")
